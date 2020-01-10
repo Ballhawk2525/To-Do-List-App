@@ -2,12 +2,14 @@
     <h1>To-Do List</h1>
     <h2>A place to store To-Dos</h2>
     <hr>
-        <input type="text" placeholder="Filter ToDos" class="filter">    
+        <input type="text" placeholder="Filter ToDos" class="filter" [(ngModel)]="filterTask">    
         <ol>
-            <li *ngFor="let task of tasks" [ngClass]="{completed: task.completed}">
-                <button class="completeButton" *ngIf= !task.completed>Complete</button> 
+            <li *ngFor="let task of tasks"   [ngClass]="{completed: task.completed}">
+                <div *ngIf=task.task.includes(filterTask)>
+                    <button class="completeButton" *ngIf= !task.completed (click)=taskCompleted(task)>Complete</button> 
                 {{ task.task }} 
-                <span class="close">x</span>
+                <span class="close" (click)="removeTask(task)">x</span>
+            </div>
             </li>
         </ol>
         <input type="text" placeholder="Add Task" class="addTask" [(ngModel)]="newTask">

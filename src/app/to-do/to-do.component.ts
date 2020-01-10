@@ -17,13 +17,14 @@ export class ToDoComponent implements OnInit {
     tasks.push({task: newTask, completed: false});
   }
 
-  // removeTask(index) {
-  //   tasks.splice(index, 1)
-  // }
+  removeTask(searchTask) {
+    let index = tasks.indexOf(searchTask);
+    tasks.splice(index, 1);
+  }
 
-  // removeCompletedTask() {
-    
-  // }
+  taskCompleted(task) {
+    task.completed = true
+  }
     
   ngOnInit() {
   }
